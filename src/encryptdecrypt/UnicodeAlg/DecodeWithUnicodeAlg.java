@@ -1,15 +1,22 @@
 package encryptdecrypt.UnicodeAlg;
 
-import encryptdecrypt.Interfaces.Unicode;
+import encryptdecrypt.Interfaces.KeyAlg;
 
-public class DecodeWithUnicodeAlg implements Unicode {
-    final int a = 'a';
-    final int z = 'z';
-    final int A = 'A';
-    final int Z = 'Z';
-
+public class DecodeWithUnicodeAlg implements KeyAlg {
     @Override
-    public String code(String text) {
-        return "decodeWithUnicodeAlg";
+    public String code(int key, String text) {
+
+        char[] before = text.toCharArray();
+        int[] after = new int[before.length];
+
+        for (int i = 0; i < before.length; i++) {
+            after[i] = before[i] - key;
+        }
+
+        for (int i = 0; i < after.length; i++) {
+            before[i] = (char) after[i];
+        }
+        return String.valueOf(before);
+
     }
 }

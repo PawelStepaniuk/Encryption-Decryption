@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="EncryptDecryptTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-31T10:20:22" hostname="Pawel" time="0.175">
+<testsuite name="EncryptDecryptTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-09-01T09:30:04" hostname="Pawel" time="0.186">
   <properties/>
-  <testcase name="start" classname="EncryptDecryptTest" time="0.175">
-    <failure message="java.lang.AssertionError: Wrong answer in test #7&#10;&#10;Wrong result in the file!&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Arguments: -mode enc -key 5 -in input.txt -alg shift -out output.txt&#10;&#10;|jqhtrj%yt%m~ujwxpnqq" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #7
+  <testcase name="start" classname="EncryptDecryptTest" time="0.186">
+    <failure message="java.lang.AssertionError: Wrong answer in test #7&#10;&#10;Wrong result in the file!&#10;&#10;Arguments: -mode enc -key 5 -in input.txt -alg shift -out output.txt" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #7
 
 Wrong result in the file!
 
-Please find below the output of your program during this failed test.
-
----
-
 Arguments: -mode enc -key 5 -in input.txt -alg shift -out output.txt
-
-|jqhtrj%yt%m~ujwxpnqq
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:97)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -66,25 +60,18 @@ Arguments: -mode enc -key 5 -in input.txt -alg shift -out output.txt
   </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-\jqhtrj%yt%m~ujwxpnqq&
 ?[1;31m
 Start test 2?[0m
-Hello
 ?[1;31m
 Start test 3?[0m
-123456789
 ?[1;31m
 Start test 4?[0m
-Welcome to hyperskill!
 ?[1;31m
 Start test 5?[0m
-Hi
 ?[1;31m
 Start test 6?[0m
-111122223333
 ?[1;31m
 Start test 7?[0m
-|jqhtrj%yt%m~ujwxpnqq
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

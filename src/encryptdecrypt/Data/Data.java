@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Data implements DataInterface {
-    final File file = new File("");
-
+    //final File file = new File("C:\\Users\\Admin\\Desktop\\Encryption-Decryption\\Encryption-Decryption\\task\\src\\encryptdecrypt\\Data");
+final File file = new File("");
     public String getDataFromFile(String in) {
+       // File data = new File(file.getPath() + "\\" + in);
         File data = new File(file.getPath() + in);
         try {
             Scanner scannerFromFile = new Scanner(data);
@@ -26,7 +27,8 @@ public class Data implements DataInterface {
     }
 
     public void saveDataInFile(String out, String data) {
-        File output = new File(file + out);
+       // File output = new File(file.getPath() + "\\" + out);
+        File output = new File(file.getPath()  + out);
         try {
             FileWriter writer = new FileWriter(output);
             writer.write(data);

@@ -1,15 +1,16 @@
 package encryptdecrypt.UnicodeAlg;
 
-import encryptdecrypt.Interfaces.Unicode;
+import encryptdecrypt.Interfaces.KeyAlg;
 
 public class UnicodeAlgContext {
-    private Unicode alg;
+    KeyAlg algorithm;
 
-    public void set(Unicode alg) {
-        this.alg = alg;
+    public void set(KeyAlg keyAlgorithm) {
+        this.algorithm = keyAlgorithm;
     }
 
-    public String code(String text) {
-        return alg.code(text);
+    public String code(int key, String text) {
+        return algorithm.code(key, text);
     }
+
 }

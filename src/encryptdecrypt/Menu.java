@@ -2,9 +2,9 @@ package encryptdecrypt;
 
 import encryptdecrypt.Data.Data;
 import encryptdecrypt.Interfaces.DataInterface;
-import encryptdecrypt.KeyAlg.DecodeWithKeyAlg;
-import encryptdecrypt.KeyAlg.EncodeWithKeyAlg;
-import encryptdecrypt.KeyAlg.KeyAlgContext;
+import encryptdecrypt.ShiftAlg.DecodeWithShiftAlg;
+import encryptdecrypt.ShiftAlg.EncodeWithShiftAlg;
+import encryptdecrypt.ShiftAlg.ShiftAlgContext;
 import encryptdecrypt.UnicodeAlg.DecodeWithUnicodeAlg;
 import encryptdecrypt.UnicodeAlg.EncodeWithUnicodeAlg;
 import encryptdecrypt.UnicodeAlg.UnicodeAlgContext;
@@ -18,8 +18,8 @@ public class Menu {
     private static String alg = "";
 
     void menu(String[] args) {
-        UnicodeAlgContext unicodeAlgContext = new UnicodeAlgContext();
-        KeyAlgContext keyAlgContext = new KeyAlgContext();
+        ShiftAlgContext shiftAlgContext = new ShiftAlgContext();
+        UnicodeAlgContext keyAlgContext = new UnicodeAlgContext();
         DataInterface file = new Data();
         try {
             for (int i = 0; i < args.length; i++) {
@@ -43,6 +43,7 @@ public class Menu {
                         break;
                     case "-alg":
                         alg = args[i + 1];
+                        break;
                 }
             }
             if (!data.isEmpty() && !in.isEmpty()) {
@@ -57,42 +58,22 @@ public class Menu {
 
         if (alg.equals("unicode")) {
             if (mode.equals("enc")) {
-                unicodeAlgContext.set(new EncodeWithUnicodeAlg());
+                keyAlgContext.set(new EncodeWithUnicodeAlg());
             } else {
-                unicodeAlgContext.set(new DecodeWithUnicodeAlg());
+                keyAlgContext.set(new DecodeWithUnicodeAlg());
             }
-            file.saveDataInFile(out, unicodeAlgContext.code(file.getDataFromFile(in)));
+            data = keyAlgContext.code(key, file.getDataFromFile(in));
         } else {
             if (mode.equals("enc")) {
-                keyAlgContext.set(new EncodeWithKeyAlg());
+                shiftAlgContext.set(new EncodeWithShiftAlg());
             } else {
-                keyAlgContext.set(new DecodeWithKeyAlg());
+                shiftAlgContext.set(new DecodeWithShiftAlg());
             }
-            file.saveDataInFile(out, keyAlgContext.code(key, file.getDataFromFile(in)));
+            data = shiftAlgContext.code(data);
+
         }
-        //  work(mode, key, data, out, in);
+        file.saveDataInFile(out, data);
     }
 
-
-/*
-   private void work(String mode, int key, String text, String out, String in) {
-        KeyAlgContext context = new KeyAlgContext();
-        DataInterface data = new Data();
-        String output = "";
-        if (text.isEmpty()) {
-            text = data.getDataFromFile(in);
-        }
-        if (mode.equals("dec")) {
-            context.setKeyAlgorithm(new decodeWithKeyAlg());
-        } else {
-            context.setKeyAlgorithm(new encodeWithKeyAlg());
-        }
-        output = context.code(key, text);
-        if (!out.isEmpty()) {
-            data.saveDataInFile(out, output);
-        }
-        System.out.println(output);
-    }
-*/
 }
 
