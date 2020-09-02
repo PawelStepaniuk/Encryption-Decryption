@@ -1,5 +1,5 @@
 package encryptdecrypt.Interfaces;
 
-public interface Unicode {
+public interface ShiftAlg {
     String code(int key, String text);
 }

@@ -1,8 +1,9 @@
 package encryptdecrypt.UnicodeAlg;
 
-import encryptdecrypt.Interfaces.KeyAlg;
 
-public class DecodeWithUnicodeAlg implements KeyAlg {
+import encryptdecrypt.Interfaces.Unicode;
+
+public class DecodeWithUnicodeAlg implements Unicode {
     @Override
     public String code(int key, String text) {
 

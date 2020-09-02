@@ -19,7 +19,7 @@ public class Menu {
 
     void menu(String[] args) {
         ShiftAlgContext shiftAlgContext = new ShiftAlgContext();
-        UnicodeAlgContext keyAlgContext = new UnicodeAlgContext();
+        UnicodeAlgContext unicodeAlgContext = new UnicodeAlgContext();
         DataInterface file = new Data();
         try {
             for (int i = 0; i < args.length; i++) {
@@ -58,20 +58,21 @@ public class Menu {
 
         if (alg.equals("unicode")) {
             if (mode.equals("enc")) {
-                keyAlgContext.set(new EncodeWithUnicodeAlg());
+                unicodeAlgContext.set(new EncodeWithUnicodeAlg());
             } else {
-                keyAlgContext.set(new DecodeWithUnicodeAlg());
+                unicodeAlgContext.set(new DecodeWithUnicodeAlg());
             }
-            data = keyAlgContext.code(key, file.getDataFromFile(in));
+            data = unicodeAlgContext.code(key, file.getDataFromFile(in));
         } else {
             if (mode.equals("enc")) {
                 shiftAlgContext.set(new EncodeWithShiftAlg());
             } else {
                 shiftAlgContext.set(new DecodeWithShiftAlg());
             }
-            data = shiftAlgContext.code(data);
 
+            data = shiftAlgContext.code(key, file.getDataFromFile(in));
         }
+
         file.saveDataInFile(out, data);
     }
 
